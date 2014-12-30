@@ -1,0 +1,7 @@
+<uwsgi>
+    <socket>:9630</socket>
+    <chdir>/home/anx/dota_only/production/doweb</chdir>
+    <module>doweb.wsgi</module>
+    <processes>10</processes>
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>

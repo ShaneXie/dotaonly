@@ -1,0 +1,58 @@
+import urllib2
+from bs4 import BeautifulSoup as bs
+import json
+
+"""
+base_url = 'http://www.huya.com'
+url = base_url+'/g/dota2'
+
+
+req = urllib2.Request(url)
+response = urllib2.urlopen(req)
+page = response.read()
+
+soup = bs(page)
+
+theScript = ""
+
+for s in soup.findAll('script'):
+    if s.string is not None and 'videoList = [' in s.string:
+        theScript = s.string
+        break
+jsonValue = '[%s]' % (theScript.split('[', 1)[1].rsplit(']', 1)[0],)
+
+print jsonValue
+
+json_object = json.loads(jsonValue)
+
+for stream in json_object:
+    print stream['channel']
+    print stream['liveChannel']
+    print stream['nick']
+    print stream['roomName']
+    print stream['privateHost']+'\n'
+
+for li in soup.findAll('li', attrs={'class':'video-list-item'}):
+        stream_img = li.find('img',attrs={'class':'pic'})['src']
+        print "img: "+ stream_img
+        """
+
+url = 'https://api.twitch.tv/kraken/search/streams?q="Dota%202"'
+
+#req = urllib2.Request(url)
+#response = urllib2.urlopen(req)
+#page = response.read()
+
+# 0=id 1=anchor 2=title 3=img 4=link
+        # streamTuple= stream_id,stream_anchor,stream_title,stream_img,stream_link
+
+js = json.load(urllib2.urlopen(url))
+
+streams = js['streams']
+
+for stream in streams:
+    print stream['preview']['medium'] #stream_img
+    print stream['channel']['status'] #stream_title
+    print stream['channel']['display_name'] #stream_anchor
+    print stream['channel']['name'] #stream_link
+    print stream['channel']['url'] #stream_id
