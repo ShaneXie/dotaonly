@@ -88,7 +88,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-"/home/anx/dota_only/production/static/",
+    #windows dev
+    "D:\Dev\GitHub\dotaonly\production\static",
+    #linux production
+    #"/home/anx/dota_only/production/static/",
 )
 
 TEMPLATE_DIRS = (
