@@ -37,6 +37,7 @@ function loadFirstDouyuStream(){
     var info = streamInfo.split('_');
     var html = "<div id=\"streamTopLeft\" class=\"streamContainerMain\"><object  type=\"application/x-shockwave-flash\" data=\"http://staticlive.douyutv.com/common/share/play.swf?room_id="+info[2]+"\" width=\"100%\" height=\"100%\" allowscriptaccess=\"always\" allowfullscreen=\"true\" allowfullscreeninteractive=\"true\"></object> </div> "
     $('#mainDivContent').html(html);
+    addWindowOP();
 }
 
 function clearScreen(){
@@ -95,10 +96,39 @@ function dragStart(){
                 $(this).html(html);
             }
             clearScreen();
+            addWindowOP();
         }
     });
 
     //$('.streamContainer').addClass('screenHover');
+}
+
+function addWindowOP(){
+    html = "<div class='opDiv'>\
+        <button class='btn btn-default btn-sm refreshBtn' type='button'><span class=\"glyphicon glyphicon-refresh\" aria-hidden=\"true\"></span></button>\
+        <button class='btn btn-default btn-sm removeBtn' type='button'><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button>\
+        <button class='btn btn-default btn-sm fullScreenBtn' type='button'><span class=\"glyphicon glyphicon-fullscreen\" aria-hidden=\"true\"></span></button>\
+        </div>";
+
+    var allScreen = $('.streamContainer, .streamContainerMain');
+    for(i=0;i<allScreen.length;i++){
+        if(!allScreen.eq(i).find(".opDiv").hasClass("opDiv") && allScreen.eq(i).html()!=""){
+            allScreen.eq(i).append(html);
+        }
+    }
+    $(".refreshBtn").click(function (){
+        stream = $(this).parent().prev();
+        $(this).parent().prev().remove();
+        $(stream).insertBefore($(this).parent());
+    });
+    $(".removeBtn").click(function (){
+        $(this).parent().parent().empty();
+        clearScreen();
+    });
+    $(".fullScreenBtn").click(function (){
+        $(this).parent().parent().siblings().empty();
+        clearScreen();
+    });
 }
 
 function streamListAjax(code){
@@ -157,28 +187,28 @@ $('#leftPanelSwitch').click(function(){
     }else{
         showLeftPanel();
     }
-})
+});
 
 $('#streamBtn').click(function(){
    $('#sitePicker').fadeIn(1000);
-})
+});
 $('#bookmarkBtn').click(function(){
    $('#sitePicker').fadeOut(1000);
-})
+});
 
 $('#getDouyuList').click(function(){
     streamListAjax('001');
-})
+});
 
 $('#getZhanqiList').click(function(){
     streamListAjax('002');
-})
+});
 $('#getHuomaoList').click(function(){
     streamListAjax('003');
-})
+});
 $('#getHuyaList').click(function(){
     streamListAjax('004');
-})
+});
 $('#getTwitchList').click(function(){
     streamListAjax('005');
-})
+});

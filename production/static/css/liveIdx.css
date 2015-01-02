@@ -37,3 +37,24 @@
 .screenHover{
     border: 2px dashed #ffff00;
 }
+
+
+.opDiv{
+    padding: 2px;
+    min-width: 115px;
+    height: 35px;
+    background-color: #0C4B33;
+    position: absolute;
+    top : 5px;
+    right : 12%;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    border: #428bca solid 1px ;
+    border-radius: 5px;
+}
+
+.opDiv:hover{
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+
+}
