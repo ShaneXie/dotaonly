@@ -113,7 +113,7 @@ def getTopStreamHuya():
         stream_anchor = stream['nick'].strip()
         stream_title = stream['roomName'].strip()
         stream_link = stream['privateHost']
-        stream_img = "http://assets.dwstatic.com/amkit/p/duya/common/img/default_live.jpg"
+        stream_img = stream['screenshot']
 
         # 0=id 1=anchor 2=title 3=img 4=link
         streamTuple= stream_id,stream_anchor,stream_title,stream_img,stream_link
