@@ -29,7 +29,7 @@ body {
     background-color: #088A68;
     /*border: 1px dashed darkgreen;*/
     height: 100%;
-    width: 250px;
+    width: 260px;
     /*margin-left: 20px;*/
     display: block;
     /*overflow-x: auto;*/
@@ -38,6 +38,7 @@ body {
 #leftPanelTop{
     height: 95px;
     border-bottom: solid #0C4B33 2px;
+    position: relative;
 }
 
 #divAvatar{
