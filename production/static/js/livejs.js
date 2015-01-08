@@ -137,6 +137,8 @@ function streamListAjax(code){
     }else{
         siteCode = code;
     }
+    loadHtml = "<div id=\"loadImg\"><img src=\"/static/img/loading1.gif\" alt=\"Loading...\" width=\"180\"><p>Loading...</p></div>";
+    $('#streamList').html(loadHtml);
     $.ajax({
       url: 'ajax/getStreamList/'+siteCode+'/',
       cache: false,
