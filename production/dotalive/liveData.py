@@ -125,7 +125,7 @@ def getTopStreamHuya():
 def getTopStreamTwitch():
     retArr = []
 
-    url = 'https://api.twitch.tv/kraken/search/streams?q="Dota%202"'
+    url = 'https://api.twitch.tv/kraken/streams?game=dota%202'
     js = json.load(urllib2.urlopen(url))
 
     streams = js['streams']
