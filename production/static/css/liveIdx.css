@@ -58,3 +58,10 @@
     filter: alpha(opacity=90);
 
 }
+
+#loadImg{
+    margin-top: 50%;
+    margin-left: 15px;
+    margin-right: 35px;
+    text-align: right;
+}
