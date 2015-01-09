@@ -28,7 +28,7 @@ function showLeftPanel(){
     $('#leftPanel').show('slide', {direction: 'left'}, 300);
     $('#leftPanelSwitchIcon').html("<span class='glyphicon glyphicon-step-backward' aria-hidden='true'></span>");
     $('#leftPanelSwitch').css("background-color","#0C4B33");
-    $('#mainDiv').css("margin-left","265px");
+    $('#mainDiv').css("margin-left","275px");
     $('#leftPanelFlag').text("on");
 }
 
