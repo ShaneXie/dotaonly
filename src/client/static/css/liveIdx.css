@@ -1,0 +1,67 @@
+.streamItem{
+    background-color: #088A68;
+    width: 240px;
+    height: 135px;
+    margin-left: 11px;
+    margin-right: 3px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.itemLabel{
+    position: relative;
+    margin-top: -40px;
+    width: 236px;
+    height: 40px;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    background-color: #000000;
+}
+.itemLabelText{
+    padding-top: 2px;
+    font-size:12px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.streamItem:hover{
+    border: 2px #80FF00 solid;
+    cursor: move;
+}
+
+.itemImg{
+    width: 236px;
+    height: 131px;
+}
+
+.screenHover{
+    border: 2px dashed #ffff00;
+}
+
+
+.opDiv{
+    padding: 2px;
+    min-width: 115px;
+    height: 35px;
+    background-color: #0C4B33;
+    position: absolute;
+    top : 50px;
+    right : 12%;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+    border: #428bca solid 1px ;
+    border-radius: 5px;
+}
+
+.opDiv:hover{
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+
+}
+
+#loadImg{
+    margin-top: 50%;
+    margin-left: 15px;
+    margin-right: 35px;
+    text-align: right;
+}

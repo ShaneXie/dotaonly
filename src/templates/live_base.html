@@ -1,0 +1,95 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    {% block title %}<title>Welcome to DotaOnly.com --- Dota2 match analysis and </title>{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/liveIdx.css' %}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+
+</head>
+<body>
+
+    <a id="leftPanelSwitch">
+        <div id="leftPanelFlag" style="visibility: hidden">on</div>
+        <div id="leftPanelSwitchTop"></div>
+        <div id="leftPanelSwitchIcon">
+            <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+        </div>
+    </a>
+
+
+        <div id="leftPanel">
+            <div id="leftPanelTop">
+                <div id = "divAvatar">
+                    <a href="#">
+                        {# use user avata field value if logged in, or use regOrLog img #}
+                      <img src="{% static 'img/regORlog.jpg' %}" alt="regORlog" class = "img-responsive">
+                    </a>
+                </div> {# end of avatar div #}
+
+                <div id="leftPanelOP">
+                    {% block panelOP %}
+
+                    {% endblock %}
+                </div>{# end of buttons #}
+            </div>
+
+            <div id="sitePicker">
+                <div class="btn-group btn-group-xs btn-group-justified" role="group" aria-label="...">
+                    <a href="#" type="radio" id="getDouyuList" class="btn btn-success" role="button">DouYu</a>
+                    <a href="#" type="radio" id="getZhanqiList" class="btn btn-success" role="button">ZhanQi</a>
+                    <a href="#" type="radio" id="getHuomaoList" class="btn btn-success" role="button">HuoMao</a>
+                    <a href="#" type="radio" id="getHuyaList" class="btn btn-success" role="button">HuYa</a>
+                    <a href="#" type="radio" id="getTwitchList" class="btn btn-success" role="button">Twitch</a>
+                </div>
+            </div>
+
+            <div id="streamList">
+                {% block streamList %}
+
+                {% endblock %}
+            </div>
+
+        </div> {# end of left panel #}
+
+
+
+        <div id="mainDiv">
+            <div id="mainDivContent">
+                {% block streamContent %}
+
+                {% endblock %}
+            </div>
+        </div>
+
+
+
+
+
+
+<!-- js -->
+    <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/livejs.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+    <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+<!--google analytics-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58108426-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
