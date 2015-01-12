@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import dbconf
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -60,16 +61,7 @@ WSGI_APPLICATION = 'doweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'NAME': 'do_live',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'do_dba',
-        'PASSWORD': '2516015.',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
-}
+DATABASES = dbconf.db
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -93,7 +85,7 @@ STATICFILES_DIRS = (
     #windows dev
     #"D:\Dev\GitHub\dotaonly\production\static",
     #linux production
-    "/home/anx/dota_only/production/static/",
+    "/home/ubuntu/dotaonly/src/client/static/",
 )
 
 TEMPLATE_DIRS = (
