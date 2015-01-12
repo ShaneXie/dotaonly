@@ -112,7 +112,7 @@ STATICFILES_DIRS = (
 
 LOCALE_PATHS = (
     #'D:\Dev\GitHub\dotaonly\production\locale',
-    "/home/anx/dota_only/production/locale"
+    "/home/anx/dota_only/production/locale",
 )
 
 TEMPLATE_DIRS = (
