@@ -37,7 +37,7 @@
                 <div id="divLangSwitch">
                     <div class="row">
                         <div class="col-md-1">
-                            <form name="setChinese" action="{% url 'set_language' %}" method="post">
+                            <form name="setChinese" action="/i18n/setlang/" method="post">
                                 {% csrf_token %}
                                 <input name="next" type="hidden" value="" />
                                 <input type="hidden" name="language" value="zh-cn" />
@@ -45,7 +45,7 @@
                             </form>
                         </div>
                         <div class="col-md-1 langSet">
-                            <form name="setEnglish" action="{% url 'set_language' %}" method="post">
+                            <form name="setEnglish" action="/i18n/setlang/" method="post">
                                 {% csrf_token %}
                                 <input name="next" type="hidden" value="" />
                                 <input type="hidden" name="language" value="en" />

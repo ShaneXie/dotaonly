@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-01-12 15:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/index.html:8
+msgid "Dota2 Streaming Fusion and Match Analysis"
+msgstr ""
+
+#: templates/index.html:21
+msgid "Dota Live"
+msgstr "直播聚合"
+
+#: templates/index.html:24
+msgid "Dota Mining(Developing)"
+msgstr "DOTA挖掘(开发中...)"
+
+#: templates/live_base.html:67
+msgid "DouYu"
+msgstr "斗鱼"
+
+#: templates/live_base.html:68
+msgid "ZhanQi"
+msgstr "战旗"
+
+#: templates/live_base.html:69
+msgid "HuoMao"
+msgstr "火猫"
+
+#: templates/live_base.html:70
+msgid "HuYa"
+msgstr "虎牙"
+
+#: templates/live_base.html:71
+msgid "Twitch"
+msgstr "Twitch"
+
+#: templates/live_index.html:11
+msgid "Streaming"
+msgstr "正直播"
+
+#: templates/live_index.html:12
+msgid "Bookmarks"
+msgstr "收藏夹"
