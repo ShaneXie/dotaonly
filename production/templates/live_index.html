@@ -1,4 +1,5 @@
 {% extends "live_base.html" %}
+{% load i18n %}
 
 
 {% block cssBlk %}
@@ -7,8 +8,8 @@
 
 {% block panelOP %}
 <div class="btn-group btn-group-xs" role="group" aria-label="...">
-  <button id='streamBtn' type="button" class="btn btn-danger">Streaming</button>
-  <button id='bookmarkBtn' type="button" class="btn btn-primary">Bookmarks</button>
+  <button id='streamBtn' type="button" class="btn btn-danger">{% trans "Streaming" %}</button>
+  <button id='bookmarkBtn' type="button" class="btn btn-primary">{% trans "Bookmarks" %}</button>
 </div>
 {% endblock %}
 

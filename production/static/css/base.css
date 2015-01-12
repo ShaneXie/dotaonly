@@ -32,7 +32,7 @@ body {
     width: 260px;
     /*margin-left: 20px;*/
     display: block;
-    /*overflow-x: auto;*/
+    overflow-x:hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 #leftPanelTop{
@@ -61,12 +61,12 @@ body {
     padding-top: 5px;
     width: 250px;
     height: 30px;
-    border-bottom: solid #0C4B33 2px;
     font-size: 80%;
+    margin-left: 4px;
 }
 #sitePicker .btn-success{
     font-weight: bold;
-    font-size: 90%;
+    font-size: 100%;
     color: #0C4B33;
 }
 #streamList{

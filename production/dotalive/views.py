@@ -1,11 +1,12 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 import django
 import liveData as ld
 
 # Create your views here.
 
 def index(request):
-    return render_to_response('index.html')
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 
 def live_index(request):
@@ -14,7 +15,7 @@ def live_index(request):
         'content': django.get_version()
     }
 
-    return render_to_response('live_index.html',{'page': page})
+    return render_to_response('live_index.html',{'page': page}, context_instance=RequestContext(request))
 
 def live_index_bysite(request,source_site):
     page = {
@@ -22,7 +23,7 @@ def live_index_bysite(request,source_site):
         'content': django.get_version()
     }
 
-    return render_to_response('live_base.html',{'page': page})
+    return render_to_response('live_base.html',{'page': page}, context_instance=RequestContext(request))
 
 def loadStreamList(request,site_code):
     # site_code
@@ -44,4 +45,4 @@ def loadStreamList(request,site_code):
         streamList = ld.getTopStreamTwitch()
         type='Twitch'
 
-    return render_to_response('list_ajax.html',{'streamList': streamList, 'type':type})
+    return render_to_response('list_ajax.html',{'streamList': streamList, 'type':type}, context_instance=RequestContext(request))

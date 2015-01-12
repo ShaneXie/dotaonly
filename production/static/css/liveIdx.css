@@ -65,3 +65,14 @@
     margin-right: 35px;
     text-align: right;
 }
+
+#divLangSwitch{
+    width: 65px;
+    position: absolute;
+    margin-left: 190px;
+    margin-top: 15px;
+}
+
+.langSet{
+    padding-left: 9px;
+}
