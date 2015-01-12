@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^live/$',live_views.live_index),
     url(r'^live/(\d{5})/$',live_views.live_index_bysite),
     url(r'^live/ajax/getStreamList/(\d{3})/$',live_views.loadStreamList),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 )

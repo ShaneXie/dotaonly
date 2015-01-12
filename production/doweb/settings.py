@@ -50,7 +50,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.i18n",
+)
+
+
 
 ROOT_URLCONF = 'doweb.urls'
 
@@ -74,7 +82,13 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-cn'
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('zh-cn', 'Chinese'),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -91,9 +105,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     #windows dev
-    #"D:\Dev\GitHub\dotaonly\production\static",
+    "D:\Dev\GitHub\dotaonly\production\static",
     #linux production
-    "/home/anx/dota_only/production/static/",
+    #"/home/anx/dota_only/production/static/",
+)
+
+LOCALE_PATHS = (
+    'D:\Dev\GitHub\dotaonly\production\locale',
 )
 
 TEMPLATE_DIRS = (

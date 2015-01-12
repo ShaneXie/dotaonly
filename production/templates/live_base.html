@@ -1,8 +1,9 @@
 {% load staticfiles %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     {% block title %}<title>Welcome to DotaOnly.com --- Dota2 match analysis and </title>{% endblock %}
 
@@ -33,6 +34,27 @@
                     </a>
                 </div> {# end of avatar div #}
 
+                <div id="divLangSwitch">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <form name="setChinese" action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="" />
+                                <input type="hidden" name="language" value="zh-cn" />
+                                <a href="#" type="radio" class="btn btn-danger btn-xs" role="button" onclick="document.setChinese.submit();return false;">中</a>
+                            </form>
+                        </div>
+                        <div class="col-md-1 langSet">
+                            <form name="setEnglish" action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="" />
+                                <input type="hidden" name="language" value="en" />
+                                <a href="#" type="radio" class="btn btn-warning btn-xs" role="button" onclick="document.setEnglish.submit();return false;">Eng</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="leftPanelOP">
                     {% block panelOP %}
 
@@ -42,11 +64,11 @@
 
             <div id="sitePicker">
                 <div class="btn-group btn-group-xs btn-group-justified" role="group" aria-label="...">
-                    <a href="#" type="radio" id="getDouyuList" class="btn btn-success" role="button">DouYu</a>
-                    <a href="#" type="radio" id="getZhanqiList" class="btn btn-success" role="button">ZhanQi</a>
-                    <a href="#" type="radio" id="getHuomaoList" class="btn btn-success" role="button">HuoMao</a>
-                    <a href="#" type="radio" id="getHuyaList" class="btn btn-success" role="button">HuYa</a>
-                    <a href="#" type="radio" id="getTwitchList" class="btn btn-success" role="button">Twitch</a>
+                    <a href="#" type="radio" id="getDouyuList" class="btn btn-success" role="button">{% trans "DouYu" %}</a>
+                    <a href="#" type="radio" id="getZhanqiList" class="btn btn-success" role="button">{% trans "ZhanQi" %}</a>
+                    <a href="#" type="radio" id="getHuomaoList" class="btn btn-success" role="button">{% trans "HuoMao" %}</a>
+                    <a href="#" type="radio" id="getHuyaList" class="btn btn-success" role="button">{% trans "HuYa" %}</a>
+                    <a href="#" type="radio" id="getTwitchList" class="btn btn-success" role="button">{% trans "Twitch" %}</a>
                 </div>
             </div>
 
