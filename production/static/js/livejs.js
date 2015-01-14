@@ -44,17 +44,27 @@ function clearScreen(){
     var counter = 0;
     var allScreen = $('.streamContainer');
     for(i=0;i<allScreen.length;i++){
-        if(allScreen.eq(i).html() == ""){
+        if(allScreen.eq(i).html() != ""){
             counter++;
         }
     }
-    if(counter == 3) {
+    if(counter == 1) {
         for (i = 0; i < allScreen.length; i++) {
             if (allScreen.eq(i).html() == "") {
                 allScreen.eq(i).remove();
             }
             else{
-                allScreen.eq(i).removeClass("streamContainer").addClass("streamContainerMain mainScreen");
+                allScreen.eq(i).removeClass("streamContainer").removeClass("twoScreen").addClass("streamContainerMain mainScreen");
+            }
+        }
+    }
+    if(counter == 2) {
+        for (i = 0; i < allScreen.length; i++) {
+            if (allScreen.eq(i).html() == "") {
+                allScreen.eq(i).remove();
+            }
+            else{
+                allScreen.eq(i).removeClass("streamContainer").addClass("streamContainer twoScreen");
             }
         }
     }
@@ -65,6 +75,13 @@ function dragStart(){
         $('.streamContainerMain').removeClass("streamContainerMain").addClass("streamContainer mainScreen");
         var qHtml = "<div class=\"streamContainer subScreen\" ></div>"
         $('#mainDivContent').append(qHtml);
+        $('#mainDivContent').append(qHtml);
+        $('#mainDivContent').append(qHtml);
+    }
+
+    if($('.streamContainer').length == 2){
+        $('.streamContainer').removeClass("twoScreen");
+        var qHtml = "<div class=\"streamContainer subScreen\" ></div>"
         $('#mainDivContent').append(qHtml);
         $('#mainDivContent').append(qHtml);
     }
