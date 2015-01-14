@@ -78,6 +78,6 @@
 }
 
 .twoScreen{
-    margin-top: 12%;
-    float: left;
+    width: 100%;
+    float: none;
 }
