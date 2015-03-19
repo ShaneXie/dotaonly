@@ -170,9 +170,9 @@ def saveToJsonFile():
 
 def main():
     counter = 1
-    sleepTime = 10
+    sleepTime = 20
     while True:
-        sleepTime = 10
+        sleepTime = 20
         try:
             saveToJsonFile()
         except:
