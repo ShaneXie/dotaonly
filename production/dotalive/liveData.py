@@ -170,15 +170,18 @@ def saveToJsonFile():
 
 def main():
     counter = 1
+    sleepTime = 10
     while True:
+        sleepTime = 10
         try:
             saveToJsonFile()
         except:
-            print "error occurs, passing the error"
+            #print "error occurs, passing the error"
+            sleepTime = 2
             pass
-        print "Json has been saved to file_%d"%counter
-        counter += 1
-        time.sleep(15)
+        #print "Json has been saved to file_%d"%counter
+        #counter += 1
+        time.sleep(sleepTime)
 
 
 def daemonize():
