@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'doweb.wsgi.application'
 DATABASES = {
     'default': {
         'NAME': 'do_live',
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'USER': 'do_dba',
         'PASSWORD': '2516015.',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
@@ -104,15 +104,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    #windows dev
-    #"D:\Dev\GitHub\dotaonly\production\static",
-    #linux production
-    "/home/anx/dota_only/production/static/",
+    os.path.join(BASE_DIR,  'static'),
 )
 
 LOCALE_PATHS = (
-    #'D:\Dev\GitHub\dotaonly\production\locale',
-    "/home/anx/dota_only/production/locale",
+    os.path.join(BASE_DIR,  'locale'),
 )
 
 TEMPLATE_DIRS = (
