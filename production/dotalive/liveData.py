@@ -150,37 +150,70 @@ def getTopStreamTwitch():
 
 def saveToJsonFile():
 
-    with open('json/douyu.json', 'w') as outJson:
-        json.dump(getTopStreamDouyu(), outJson)
+    print "\nStream json refreshing..%d" % time.time()
+    try:
+        start = time.time()
+        with open('json/douyu.json', 'w') as outJson:
+            json.dump(getTopStreamDouyu(), outJson)
+        print "Douyu Time consume: %d"%(time.time()-start)
+    except Exception as e:
+        print "Douyu Error"
+        print e.message
+        pass
 
-    with open('json/zhanqi.json', 'w') as outJson:
-        json.dump(getTopStreamZhanqi(), outJson)
+    try:
+        start = time.time()
+        with open('json/zhanqi.json', 'w') as outJson:
+            json.dump(getTopStreamZhanqi(), outJson)
+        print "Zhanqi Time consume: %d"%(time.time()-start)
+    except Exception as e:
+        print "Zhanqi Error"
+        print e.message
+        pass
 
-    with open('json/huomao.json', 'w') as outJson:
-        json.dump(getTopStreamHuomao(), outJson)
+    try:
+        start = time.time()
+        with open('json/huomao.json', 'w') as outJson:
+            json.dump(getTopStreamHuomao(), outJson)
+        print "Huomao Time consume: %d"%(time.time()-start)
+    except Exception as e:
+        print "Huomao Error"
+        print e.message
+        pass
 
-    with open('json/huya.json', 'w') as outJson:
-        json.dump(getTopStreamHuya(), outJson)
+    try:
+        start = time.time()
+        with open('json/huya.json', 'w') as outJson:
+            json.dump(getTopStreamHuya(), outJson)
+        print "Huya Time consume: %d"%(time.time()-start)
+    except Exception as e:
+        print "Huya Error"
+        print e.message
+        pass
 
-    with open('json/twitch.json', 'w') as outJson:
-        json.dump(getTopStreamTwitch(), outJson)
+    try:
+        start = time.time()
+        with open('json/twitch.json', 'w') as outJson:
+            json.dump(getTopStreamTwitch(), outJson)
+        print "Twitch Time consume: %d"%(time.time()-start)
+    except Exception as e:
+        print "Twitch Error"
+        print e.message
+        pass
 
     return True
 
 
 def main():
-    counter = 1
-    sleepTime = 20
     while True:
         sleepTime = 20
         try:
+            start = time.time()
             saveToJsonFile()
         except:
-            #print "error occurs, passing the error"
+            print "error occurs, passing the error"
             sleepTime = 2
             pass
-        #print "Json has been saved to file_%d"%counter
-        #counter += 1
         time.sleep(sleepTime)
 
 
