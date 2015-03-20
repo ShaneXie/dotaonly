@@ -2,10 +2,14 @@ __author__ = 'An'
 import urllib2
 import json
 import time
+import errno
 import os
 import sys
 from bs4 import BeautifulSoup as bs
+from timeout import timeout
 
+
+TIME_OUT = 10
 
 def getHtml(url):
     req = urllib2.Request(url)
@@ -14,6 +18,7 @@ def getHtml(url):
     return page
 
 
+@timeout(TIME_OUT, os.strerror(errno.ETIMEDOUT))
 def getTopStreamDouyu():
     arr = []
     dic = {}
@@ -39,6 +44,8 @@ def getTopStreamDouyu():
     dic['streams'] = arr
     return dic
 
+
+@timeout(TIME_OUT, os.strerror(errno.ETIMEDOUT))
 def getTopStreamZhanqi():
     arr = []
     dic = {}
@@ -64,6 +71,7 @@ def getTopStreamZhanqi():
     return dic
 
 
+@timeout(TIME_OUT, os.strerror(errno.ETIMEDOUT))
 def getTopStreamHuomao():
     arr = []
     dic ={}
@@ -89,6 +97,7 @@ def getTopStreamHuomao():
     return dic
 
 
+@timeout(TIME_OUT, os.strerror(errno.ETIMEDOUT))
 def getTopStreamHuya():
     arr = []
     dic = {}
@@ -124,6 +133,7 @@ def getTopStreamHuya():
     return dic
 
 
+@timeout(TIME_OUT, os.strerror(errno.ETIMEDOUT))
 def getTopStreamTwitch():
     arr = []
     dic = {}
@@ -159,6 +169,7 @@ def saveToJsonFile():
     except Exception as e:
         print "Douyu Error"
         print e.message
+        return False
         pass
 
     try:
@@ -169,6 +180,7 @@ def saveToJsonFile():
     except Exception as e:
         print "Zhanqi Error"
         print e.message
+        return False
         pass
 
     try:
@@ -179,6 +191,7 @@ def saveToJsonFile():
     except Exception as e:
         print "Huomao Error"
         print e.message
+        return False
         pass
 
     try:
@@ -189,6 +202,7 @@ def saveToJsonFile():
     except Exception as e:
         print "Huya Error"
         print e.message
+        return False
         pass
 
     try:
@@ -199,6 +213,7 @@ def saveToJsonFile():
     except Exception as e:
         print "Twitch Error"
         print e.message
+        return False
         pass
 
     return True
@@ -209,7 +224,8 @@ def main():
         sleepTime = 20
         try:
             start = time.time()
-            saveToJsonFile()
+            if not saveToJsonFile():
+                sleepTime = 2
         except:
             print "error occurs, passing the error"
             sleepTime = 2
