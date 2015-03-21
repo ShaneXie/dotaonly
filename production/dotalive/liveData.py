@@ -7,6 +7,7 @@ import os
 import sys
 from bs4 import BeautifulSoup as bs
 from timeout import timeout
+from datetime import datetime
 
 
 TIME_OUT = 10
@@ -160,7 +161,7 @@ def getTopStreamTwitch():
 
 def saveToJsonFile():
 
-    print "\nStream json refreshing..%d" % time.time()
+    print "\nStream json refreshing...", str(datetime.now())
     try:
         start = time.time()
         with open('json/douyu.json', 'w') as outJson:
