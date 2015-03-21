@@ -222,7 +222,7 @@ def saveToJsonFile():
 
 def main():
     while True:
-        sleepTime = 20
+        sleepTime = 240
         try:
             start = time.time()
             if not saveToJsonFile():
