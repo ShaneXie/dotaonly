@@ -1,11 +1,11 @@
 
 {# 0=id 1=anchor 2=title 3=img 4=link #}
 
-{% for stream in streamList %}
-    <div class="streamItem" id="stream_{{ type }}_{{ stream.0 }}_{{ stream.4 }}">
-        <img class="itemImg" src="{{ stream.3 }}">
+{% for stream in streamList.streams %}
+    <div class="streamItem" id="stream_{{ type }}_{{ stream.id }}_{{ stream.link }}">
+        <img class="itemImg" src="{{ stream.img }}">
         <div class="itemLabel">
-            <div class="itemLabelText">{{ stream.1 }}:</br>{{ stream.2 }}</div>
+            <div class="itemLabelText">{{ stream.anchor }}:</br>{{ stream.title }}</div>
         </div>
     </div>
 {% endfor %}

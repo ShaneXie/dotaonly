@@ -1,9 +1,12 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import django
-import liveData as ld
+import os
+import json
+
 
 # Create your views here.
+pwd = os.path.dirname(__file__)
 
 def index(request):
     return render_to_response('index.html', context_instance=RequestContext(request))
@@ -30,19 +33,24 @@ def loadStreamList(request,site_code):
     # 001 = douyu 002=Zhanqi 003=Huomao 004= huya 005 = twitch
     type=""
     if int(site_code) == 001:
-        streamList = ld.getTopStreamDouyu()
+        with open(pwd+'/json/douyu.json') as json_file:
+            streamList = json.load(json_file)
         type='Douyu'
     if int(site_code) == 002:
-        streamList = ld.getTopStreamZhanqi()
+        with open(pwd+'/json/zhanqi.json') as json_file:
+            streamList = json.load(json_file)
         type='Zhanqi'
     if int(site_code) == 003:
-        streamList = ld.getTopStreamHuomao()
+        with open(pwd+'/json/huomao.json') as json_file:
+            streamList = json.load(json_file)
         type='Huomao'
     if int(site_code) == 004:
-        streamList = ld.getTopStreamHuya()
+        with open(pwd+'/json/huya.json') as json_file:
+            streamList = json.load(json_file)
         type='Huya'
     if int(site_code) == 005:
-        streamList = ld.getTopStreamTwitch()
+        with open(pwd+'/json/twitch.json') as json_file:
+            streamList = json.load(json_file)
         type='Twitch'
 
     return render_to_response('list_ajax.html',{'streamList': streamList, 'type':type}, context_instance=RequestContext(request))
