@@ -58,10 +58,10 @@ def getTopStreamZhanqi():
     dire_soup = bs(dire_page)
 
     for li in dire_soup.find('ul', attrs={'id':'hotList'}).findAll('li'):
-        stream_title = li.find('a',attrs={'class':'name'}).string
-        stream_link = li.find('a',attrs={'class':'name'})['href']
+        stream_title = li.find('span',attrs={'class':'name'}).string
+        stream_link = li.find('a',attrs={'class':'js-jump-link'})['href']
         stream_img = li.find('img')['src']
-        stream_anchor = li.find('a',attrs={'class':'anchor'}).string
+        stream_anchor = li.find('span',attrs={'class':'anchor'}).string
         stream_id = li['data-room-id']
 
         # 0=id 1=anchor 2=title 3=img 4=link
