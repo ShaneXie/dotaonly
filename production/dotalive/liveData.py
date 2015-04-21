@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 __author__ = 'An'
 import urllib2
 import json
@@ -5,10 +6,16 @@ import time
 import errno
 import os
 import sys
+import logging
 from bs4 import BeautifulSoup as bs
 from timeout import timeout
 from datetime import datetime
 
+LOG_FILE = 'dotaonly.log'
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+handler = logging.FileHandler(LOG_FILE, mode='w')
+log.addHandler(handler)
 
 TIME_OUT = 10
 
@@ -161,26 +168,25 @@ def getTopStreamTwitch():
 
 def saveToJsonFile():
 
-    print "\nStream json refreshing...", str(datetime.now())
+    log.debug("Stream json refreshing...")
     try:
         start = time.time()
         with open('json/douyu.json', 'w') as outJson:
             json.dump(getTopStreamDouyu(), outJson)
-        print "Douyu Time consume: %d"%(time.time()-start)
+        log.debug("Douyu Time consume: %d"%(time.time()-start))
     except Exception as e:
-        print "Douyu Error"
-        print e.message
+        log.debug("Douyu Error")
+        log.debug(e.message)
         return False
-        pass
 
     try:
         start = time.time()
         with open('json/zhanqi.json', 'w') as outJson:
             json.dump(getTopStreamZhanqi(), outJson)
-        print "Zhanqi Time consume: %d"%(time.time()-start)
+        log.debug("Zhanqi Time consume: %d"%(time.time()-start))
     except Exception as e:
-        print "Zhanqi Error"
-        print e.message
+        log.debug("Zhanqi Error")
+        log.debug(e.message)
         return False
         pass
 
@@ -188,10 +194,10 @@ def saveToJsonFile():
         start = time.time()
         with open('json/huomao.json', 'w') as outJson:
             json.dump(getTopStreamHuomao(), outJson)
-        print "Huomao Time consume: %d"%(time.time()-start)
+        log.debug("Huomao Time consume: %d"%(time.time()-start))
     except Exception as e:
-        print "Huomao Error"
-        print e.message
+        log.debug("Huomao Error")
+        log.debug(e.message)
         return False
         pass
 
@@ -199,10 +205,10 @@ def saveToJsonFile():
         start = time.time()
         with open('json/huya.json', 'w') as outJson:
             json.dump(getTopStreamHuya(), outJson)
-        print "Huya Time consume: %d"%(time.time()-start)
+        log.debug("Huya Time consume: %d"%(time.time()-start))
     except Exception as e:
-        print "Huya Error"
-        print e.message
+        log.debug("Huya Error")
+        log.debug(e.message)
         return False
         pass
 
@@ -210,10 +216,10 @@ def saveToJsonFile():
         start = time.time()
         with open('json/twitch.json', 'w') as outJson:
             json.dump(getTopStreamTwitch(), outJson)
-        print "Twitch Time consume: %d"%(time.time()-start)
+        log.debug("Twitch Time consume: %d"%(time.time()-start))
     except Exception as e:
-        print "Twitch Error"
-        print e.message
+        log.debug("Twitch Error")
+        log.debug(e.message)
         return False
         pass
 
@@ -222,13 +228,14 @@ def saveToJsonFile():
 
 def main():
     while True:
-        sleepTime = 240
+        log.debug('alive...')
+        sleepTime = 5
         try:
             start = time.time()
             if not saveToJsonFile():
                 sleepTime = 2
         except:
-            print "error occurs, passing the error"
+            log.debug("error occurs, passing the error")
             sleepTime = 2
             pass
         time.sleep(sleepTime)
@@ -246,7 +253,7 @@ def daemonize():
         sys.exit(0)
     main()
 
+
 if __name__ == '__main__':
     daemonize()
-else:
-    print 'imported by others'
+
