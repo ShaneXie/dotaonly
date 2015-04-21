@@ -19,7 +19,7 @@ handler = logging.FileHandler(LOG_FILE, mode='w')
 log.addHandler(handler)
 
 TIME_OUT = 10
-INTERVAL = 240
+INTERVAL = 5
 EXPCEPTION_INTERVAL = 2
 
 def getHtml(url):
