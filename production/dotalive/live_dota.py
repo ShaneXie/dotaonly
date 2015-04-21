@@ -19,7 +19,8 @@ handler = logging.FileHandler(LOG_FILE, mode='w')
 log.addHandler(handler)
 
 TIME_OUT = 10
-
+INTERVAL = 240
+EXPCEPTION_INTERVAL = 2
 
 def getHtml(url):
     req = urllib2.Request(url)
@@ -201,7 +202,6 @@ def saveToJsonFile():
         log.debug("Zhanqi Error")
         log.debug(e.message)
         return False
-        pass
 
     try:
         start = time.time()
@@ -212,7 +212,6 @@ def saveToJsonFile():
         log.debug("Huomao Error")
         log.debug(e.message)
         return False
-        pass
 
     try:
         start = time.time()
@@ -223,7 +222,6 @@ def saveToJsonFile():
         log.debug("Huya Error")
         log.debug(e.message)
         return False
-        pass
 
     try:
         start = time.time()
@@ -234,7 +232,6 @@ def saveToJsonFile():
         log.debug("Twitch Error")
         log.debug(e.message)
         return False
-        pass
 
     return True
 
@@ -242,16 +239,15 @@ def saveToJsonFile():
 def main():
     while True:
         log.debug('alive...')
-        sleepTime = 5
+        sleep_time = INTERVAL
         try:
             start = time.time()
             if not saveToJsonFile():
-                sleepTime = 2
+                sleep_time = EXPCEPTION_INTERVAL
         except:
             log.debug("error occurs, passing the error")
-            sleepTime = 2
-            pass
-        time.sleep(sleepTime)
+            sleep_time = EXPCEPTION_INTERVAL
+        time.sleep(sleep_time)
 
 
 def daemonize():
