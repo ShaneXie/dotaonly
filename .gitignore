@@ -1,2 +1,3 @@
 *.pyc
 .idea/
+production/db.sqlite3
