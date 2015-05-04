@@ -29,11 +29,6 @@ def live_index_bysite(request,source_site):
 
     return render_to_response('live_base.html',{'page': page}, context_instance=RequestContext(request))
 
-
-def get_cache():
-    pass
-
-
 def loadStreamList(request,site_code):
     # site_code
     # 001 = douyu 002=Zhanqi 003=Huomao 004= huya 005 = twitch
