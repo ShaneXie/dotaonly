@@ -6,6 +6,8 @@ import errno
 import os
 import sys
 import logging
+import redis
+import pickle
 from bs4 import BeautifulSoup as bs
 from timeout import timeout
 from datetime import datetime
@@ -180,13 +182,13 @@ def getTopStreamTwitch():
     return dic
 
 
-def saveToJsonFile():
+def saveToJsonFile(redis_client):
 
     log.debug("Stream json refreshing...")
     try:
         start = time.time()
-        with open('json/douyu.json', 'w') as outJson:
-            json.dump(getTopStreamDouyu(), outJson)
+        data = getTopStreamDouyu()
+        redis_client.set(':1:douyu', pickle.dumps(json.dumps(data)))
         log.debug("Douyu Time consume: %d" % (time.time()-start))
     except Exception as e:
         log.debug("Douyu Error")
@@ -195,8 +197,8 @@ def saveToJsonFile():
 
     try:
         start = time.time()
-        with open('json/zhanqi.json', 'w') as outJson:
-            json.dump(getTopStreamZhanqi(), outJson)
+        data = getTopStreamZhanqi()
+        redis_client.set(':1:zhanqi', pickle.dumps(json.dumps(data)))
         log.debug("Zhanqi Time consume: %d" % (time.time()-start))
     except Exception as e:
         log.debug("Zhanqi Error")
@@ -205,8 +207,8 @@ def saveToJsonFile():
 
     try:
         start = time.time()
-        with open('json/huomao.json', 'w') as outJson:
-            json.dump(getTopStreamHuomao(), outJson)
+        data = getTopStreamHuomao()
+        redis_client.set(':1:huomao', pickle.dumps(json.dumps(data)))
         log.debug("Huomao Time consume: %d" % (time.time()-start))
     except Exception as e:
         log.debug("Huomao Error")
@@ -215,8 +217,8 @@ def saveToJsonFile():
 
     try:
         start = time.time()
-        with open('json/huya.json', 'w') as outJson:
-            json.dump(getTopStreamHuya(), outJson)
+        data = getTopStreamHuya()
+        redis_client.set(':1:huya', pickle.dumps(json.dumps(data)))
         log.debug("Huya Time consume: %d" % (time.time()-start))
     except Exception as e:
         log.debug("Huya Error")
@@ -225,8 +227,8 @@ def saveToJsonFile():
 
     try:
         start = time.time()
-        with open('json/twitch.json', 'w') as outJson:
-            json.dump(getTopStreamTwitch(), outJson)
+        data = getTopStreamTwitch()
+        redis_client.set(':1:twitch', pickle.dumps(json.dumps(data)))
         log.debug("Twitch Time consume: %d" % (time.time()-start))
     except Exception as e:
         log.debug("Twitch Error")
@@ -237,12 +239,13 @@ def saveToJsonFile():
 
 
 def main():
+    redis_client = redis.StrictRedis()
     while True:
         log.debug('alive...')
         sleep_time = INTERVAL
         try:
             start = time.time()
-            if not saveToJsonFile():
+            if not saveToJsonFile(redis_client):
                 sleep_time = EXPCEPTION_INTERVAL
         except:
             log.debug("error occurs, passing the error")

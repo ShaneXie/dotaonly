@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.core.cache import cache
 import django
 import os
 import json
@@ -33,24 +34,19 @@ def loadStreamList(request,site_code):
     # 001 = douyu 002=Zhanqi 003=Huomao 004= huya 005 = twitch
     type=""
     if int(site_code) == 001:
-        with open(pwd+'/json/douyu.json') as json_file:
-            streamList = json.load(json_file)
+        streamList = json.loads(cache.get('douyu'))
         type='Douyu'
     if int(site_code) == 002:
-        with open(pwd+'/json/zhanqi.json') as json_file:
-            streamList = json.load(json_file)
+        streamList = json.loads(cache.get('zhanqi'))
         type='Zhanqi'
     if int(site_code) == 003:
-        with open(pwd+'/json/huomao.json') as json_file:
-            streamList = json.load(json_file)
+        streamList = json.loads(cache.get('huomao'))
         type='Huomao'
     if int(site_code) == 004:
-        with open(pwd+'/json/huya.json') as json_file:
-            streamList = json.load(json_file)
+        streamList = json.loads(cache.get('huya'))
         type='Huya'
     if int(site_code) == 005:
-        with open(pwd+'/json/twitch.json') as json_file:
-            streamList = json.load(json_file)
+        streamList = json.loads(cache.get('twitch'))
         type='Twitch'
 
     return render_to_response('list_ajax.html',{'streamList': streamList, 'type':type}, context_instance=RequestContext(request))
