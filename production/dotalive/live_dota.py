@@ -197,7 +197,7 @@ def saveToJsonFile(redis_client):
 
     try:
         start = time.time()
-        data = getTopStreamDouyu()
+        data = getTopStreamZhanqi()
         redis_client.set(':1:zhanqi', pickle.dumps(json.dumps(data)))
         log.debug("Zhanqi Time consume: %d" % (time.time()-start))
     except Exception as e:
@@ -207,7 +207,7 @@ def saveToJsonFile(redis_client):
 
     try:
         start = time.time()
-        data = getTopStreamDouyu()
+        data = getTopStreamHuomao()
         redis_client.set(':1:huomao', pickle.dumps(json.dumps(data)))
         log.debug("Huomao Time consume: %d" % (time.time()-start))
     except Exception as e:
@@ -217,7 +217,7 @@ def saveToJsonFile(redis_client):
 
     try:
         start = time.time()
-        data = getTopStreamDouyu()
+        data = getTopStreamHuya()
         redis_client.set(':1:huya', pickle.dumps(json.dumps(data)))
         log.debug("Huya Time consume: %d" % (time.time()-start))
     except Exception as e:
@@ -227,7 +227,7 @@ def saveToJsonFile(redis_client):
 
     try:
         start = time.time()
-        data = getTopStreamDouyu()
+        data = getTopStreamTwitch()
         redis_client.set(':1:twitch', pickle.dumps(json.dumps(data)))
         log.debug("Twitch Time consume: %d" % (time.time()-start))
     except Exception as e:
