@@ -82,11 +82,11 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 #LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'zh-hans'
 
 LANGUAGES = (
     ('en', 'English'),
-    ('zh-cn', 'Chinese'),
+    ('zh-hans', 'Chinese'),
 )
 
 CACHES = {
